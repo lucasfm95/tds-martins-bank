@@ -17,4 +17,15 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MartinsBank.Domain\MartinsBank.Domain.csproj" />
+    <ProjectReference Include="..\MartinsBank.Repository\MartinsBank.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="MartinsBankApi.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

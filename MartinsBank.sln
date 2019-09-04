@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MartinsBankApi", "MartinsBankApi\MartinsBankApi.csproj", "{AA97C670-1FF5-4BF1-AF70-D042F3E6DDE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartinsBank.Repository", "MartinsBank.Repository\MartinsBank.Repository.csproj", "{09C00184-47D2-409C-90DD-5479B2FE44A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MartinsBank.Repository", "MartinsBank.Repository\MartinsBank.Repository.csproj", "{09C00184-47D2-409C-90DD-5479B2FE44A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MartinsBank.Domain", "MartinsBank.Domain\MartinsBank.Domain.csproj", "{F15EE1BF-0BA7-43A6-9357-63DB1EDACDB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{09C00184-47D2-409C-90DD-5479B2FE44A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09C00184-47D2-409C-90DD-5479B2FE44A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09C00184-47D2-409C-90DD-5479B2FE44A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F15EE1BF-0BA7-43A6-9357-63DB1EDACDB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F15EE1BF-0BA7-43A6-9357-63DB1EDACDB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F15EE1BF-0BA7-43A6-9357-63DB1EDACDB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F15EE1BF-0BA7-43A6-9357-63DB1EDACDB1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

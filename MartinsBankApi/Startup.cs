@@ -26,6 +26,8 @@ namespace MartinsBankApi
         {
             services.AddMvc( ).SetCompatibilityVersion( CompatibilityVersion.Version_2_2 );
 
+            // Adiciona os middlewares
+            services.AddDependencyInjection( Configuration );
             services.AddSwaggerMiddleware( );
         }
 
