@@ -23,7 +23,15 @@ namespace MartinsBank.Repository.Base
         /// <returns>Lista de objetos</returns>
         public List<T> FindAll( )
         {
-            return m_Collection.AsQueryable<T>( ).ToList( );
+            try
+            {
+                return m_Collection.AsQueryable<T>( ).ToList( );
+            }
+            catch ( Exception ex)
+            {
+                throw;
+            }
+            
         }
 
         /// <summary>
@@ -41,8 +49,16 @@ namespace MartinsBank.Repository.Base
         /// <param name="p_Obj">Objeto</param>
         public bool Insert( T p_Obj )
         {
-            m_Collection.InsertOne( p_Obj );
-            return true;
+            try
+            {
+                m_Collection.InsertOne( p_Obj );
+                return true;
+            }
+            catch ( Exception ex)
+            {
+                throw;
+            }
+
         }
     }
 }

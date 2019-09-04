@@ -22,11 +22,24 @@ namespace MartinsBankApi.Controllers
             m_AccountEventRepository = p_AccountEventRepository;
         }
 
+        /// <summary>
+        /// Lista todas as movimentações de uma conta em ordem cronológica
+        /// </summary>
+        /// <param name="accountId">Id da conta</param>
+        /// <param name="year">Filtro para ano</param>
+        /// <returns>Lista de movimentações</returns>
         [HttpGet( "account/{accountId}" )]
         [ProducesResponseType( typeof( List<AccountEventEntity> ), ( int ) HttpStatusCode.OK )]
-        public async Task<IActionResult> Get( [FromRoute]int accountId )
+        public async Task<IActionResult> Get( [FromRoute]int accountId, [FromQuery] int? year )
         {
-            return Ok( m_AccountEventRepository.FindAll( ).FindAll( ( a ) => a.AccountId == accountId ) );
+            if ( year.HasValue )
+            {
+                return Ok( m_AccountEventRepository.FindAllByAccountAndYear( accountId, year.Value ) );
+            }
+            else
+            {
+                return Ok( m_AccountEventRepository.FindAllByAccount( accountId ) );
+            }
         }
 
         /// <summary>
@@ -43,8 +56,8 @@ namespace MartinsBankApi.Controllers
 
             if ( m_AccountEventRepository.Insert( accountEvent ) )
             {
-                List<AccountEventEntity> accountEventEntities = m_AccountEventRepository.FindAll( );
-                double totalValue = accountEventEntities.FindAll( ( a ) => a.Type == accountEvent.Type && a.AccountId == accountId ).Sum( ( b ) => b.Value );
+                List<AccountEventEntity> accountEventEntities = m_AccountEventRepository.FindAllByAccount( accountId );
+                double totalValue = accountEventEntities.FindAll( ( a ) => a.Type == accountEvent.Type ).Sum( ( b ) => b.Value );
 
                 return Ok( new AccountEventResponsePostModel( )
                 {

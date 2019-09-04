@@ -9,5 +9,7 @@ namespace MartinsBank.Repository.Interfaces
     {
         List<AccountEventEntity> FindAll( );
         bool Insert( AccountEventEntity p_Obj );
+        List<AccountEventEntity> FindAllByAccount( int p_AccountId );
+        List<AccountEventEntity> FindAllByAccountAndYear( int p_AccountId, int p_Year );
     }
 }
