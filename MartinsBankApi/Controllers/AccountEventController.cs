@@ -54,17 +54,24 @@ namespace MartinsBankApi.Controllers
         {
             AccountEventEntity accountEvent = new AccountEventEntity( p_AccountEventModel, accountId );
 
-            if ( m_AccountEventRepository.Insert( accountEvent ) )
-            {
-                List<AccountEventEntity> accountEventEntities = m_AccountEventRepository.FindAllByAccount( accountId );
-                double totalValue = accountEventEntities.FindAll( ( a ) => a.Type == accountEvent.Type ).Sum( ( b ) => b.Value );
+            List<AccountEventEntity> accountEventEntities = m_AccountEventRepository.FindAllByAccount( accountId );
+            double totalValue = accountEventEntities.FindAll( ( a ) => a.Type == eEventType.Credit).Sum( ( b ) => b.Value ) - accountEventEntities.FindAll( ( a ) => a.Type == eEventType.Debt ).Sum( ( b ) => b.Value );
 
-                return Ok( new AccountEventResponsePostModel( )
+            if ( totalValue > p_AccountEventModel.Value)
+            {
+                if ( m_AccountEventRepository.Insert( accountEvent ) )
                 {
-                    Type = accountEvent.Type,
-                    Value = accountEvent.Value,
-                    TotalValue = totalValue
-                } );
+                    return Ok( new AccountEventResponsePostModel( )
+                    {
+                        Type = accountEvent.Type,
+                        Value = accountEvent.Value,
+                        TotalValue = totalValue
+                    } );
+                }
+                else
+                {
+                    return BadRequest( );
+                }
             }
             else
             {
