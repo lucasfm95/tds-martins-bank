@@ -56,7 +56,7 @@ namespace MartinsBank.Repository.Base
             }
             catch ( Exception ex)
             {
-                throw;
+                throw new Exception("", ex);
             }
 
         }

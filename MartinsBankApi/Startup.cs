@@ -29,6 +29,7 @@ namespace MartinsBankApi
             // Adiciona os middlewares
             services.AddDependencyInjection( Configuration );
             services.AddSwaggerMiddleware( );
+            services.AddLoggerMiddleware( );
         }
 
         public void Configure( IApplicationBuilder app, IHostingEnvironment env )
